@@ -14,8 +14,6 @@ conf/applicationContext-mail.xml
 conf/csx.config.properties
 conf/csx.config.properties-staging
 crawler/cdi/black_list.dat
-crawler/cdi/runconfig.py
-crawler/cdi/settings.py
 crawler/cdi/config.py
 crawler/cdi/conf.py
 web/citeseerx_oaiwebapp/WEB-INF/csx-oai.config.properties

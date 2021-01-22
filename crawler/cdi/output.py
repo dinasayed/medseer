@@ -122,7 +122,7 @@ class CiteSeerWriter(object):
                     dbquerypar = (r.parent_url.decode('utf8'),r.parent_md5,str(r.crawl_date),str(r.crawl_date),'1')
 		    cursor.execute(dbquery,dbquerypar)
 		    pid = cursor.lastrowid
-		    transaction.commit_unless_managed()
+		    #transaction.commit_unless_managed()
 		# update an existing parent URL
 		else:
 		    row = rows[0]
@@ -132,7 +132,7 @@ class CiteSeerWriter(object):
 			    " SET last_crawl_date='"+str(r.crawl_date)+\
 			    "' WHERE id="+str(row['id'])+";"
 			cursor.execute(dbquery)
-		        transaction.commit_unless_managed()
+		        #transaction.commit_unless_managed()
             finally:
                 self.update_parent_lock.release()
         else:
@@ -176,7 +176,7 @@ class CiteSeerWriter(object):
 		    print 'output.py. MySQL Operationl Error. dbquery = ',dbquery % dbquerypar
 		    raise SystemExit(e)
 
-		transaction.commit_unless_managed()
+		#transaction.commit_unless_managed()
 		self.docid = cursor.lastrowid
 		
 		db_entry_updated = True
@@ -219,7 +219,7 @@ class CiteSeerWriter(object):
 		    "',parent_id="+str(row['parent_id'])+\
 		    " WHERE id="+str(row['id'])
 		cursor.execute(dbquery)
-		transaction.commit_unless_managed()
+		#transaction.commit_unless_managed()
 
 	        self.docid = row['id']
         finally:
