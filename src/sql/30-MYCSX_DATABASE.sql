@@ -4,7 +4,7 @@
 #  IGC
 #
 
-CREATE DATABASE myciteseerx CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE myciteseerx CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE myciteseerx;
 
@@ -36,7 +36,7 @@ CREATE TABLE users (
   INDEX(internalid),
   INDEX(appid)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE authorities (
@@ -49,7 +49,7 @@ CREATE TABLE authorities (
   FOREIGN KEY(userid) REFERENCES users(userid)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE submissionJobs (
@@ -68,7 +68,7 @@ CREATE TABLE submissionJobs (
   FOREIGN KEY(UID) REFERENCES users(userid)
     ON DELETE RESTRICT ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE submissionComponents (
@@ -86,7 +86,7 @@ CREATE TABLE submissionComponents (
   FOREIGN KEY(JID) REFERENCES submissionJobs(JID)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE activation (
@@ -101,7 +101,7 @@ CREATE TABLE activation (
   FOREIGN KEY(userid) REFERENCES users(userid)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE invitations (
@@ -110,7 +110,7 @@ CREATE TABLE invitations (
   PRIMARY KEY(id),
   INDEX(ticket)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE configuration (
@@ -133,7 +133,7 @@ CREATE TABLE collections (
   FOREIGN KEY(UID) REFERENCES users(userid)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE collection_notes (
@@ -148,7 +148,7 @@ CREATE TABLE collection_notes (
   FOREIGN KEY(UID) REFERENCES users(userid)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE papers_in_collection (
@@ -161,7 +161,7 @@ CREATE TABLE papers_in_collection (
   FOREIGN KEY(UID) REFERENCES users(userid)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE paper_notes (
@@ -178,7 +178,7 @@ CREATE TABLE paper_notes (
   FOREIGN KEY(UID) REFERENCES users(userid)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE monitors (
@@ -191,7 +191,7 @@ CREATE TABLE monitors (
   FOREIGN KEY(userid) REFERENCES users(userid)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE tags (
@@ -208,9 +208,9 @@ CREATE TABLE tags (
   FOREIGN KEY(userid) REFERENCES users(userid)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
-CREATE TABLE groups (
+CREATE TABLE thegroups (
   id SERIAL,
   name VARCHAR(100) NOT NULL,
   description VARCHAR(255),
@@ -220,18 +220,18 @@ CREATE TABLE groups (
   FOREIGN KEY(owner) REFERENCES users(userid)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 CREATE TABLE group_members (
   groupid BIGINT UNSIGNED NOT NULL,
   userid VARCHAR(100) NOT NULL,
   validating BOOLEAN NOT NULL DEFAULT true,
   PRIMARY KEY (groupid, userid),
-  FOREIGN KEY(groupid) REFERENCES groups(id)
+  FOREIGN KEY(groupid) REFERENCES thegroups(id)
     ON DELETE CASCADE,
   FOREIGN KEY(userid) REFERENCES users(userid)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 CREATE TABLE acl_sid (
   id SERIAL,
@@ -240,7 +240,7 @@ CREATE TABLE acl_sid (
   PRIMARY KEY (id),
   UNIQUE KEY(sid, principal)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 CREATE TABLE acl_class (
  id SERIAL,
@@ -248,7 +248,7 @@ CREATE TABLE acl_class (
  PRIMARY KEY(id),
  UNIQUE KEY(class)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 CREATE TABLE acl_object_identity (
   id SERIAL,
@@ -266,7 +266,7 @@ CREATE TABLE acl_object_identity (
   FOREIGN KEY(object_id_class) REFERENCES acl_class(id),
   FOREIGN KEY(owner_sid) REFERENCES acl_sid(id)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 CREATE TABLE acl_entry (
   id SERIAL,
@@ -283,14 +283,14 @@ CREATE TABLE acl_entry (
   FOREIGN KEY(acl_object_identity) REFERENCES acl_object_identity(id),
   FOREIGN KEY(sid) REFERENCES acl_sid(id)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 CREATE TABLE indexTime (
     param VARCHAR(255) NOT NULL,
     lastupdate TIMESTAMP NOT NULL,
     PRIMARY KEY(param)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 DELIMITER //
 
@@ -316,4 +316,4 @@ INSERT INTO configuration VALUES ('peopleSearchEnabled', 'false');
 INSERT INTO configuration VALUES ('personalPortalEnabled', 'false');
 
 
-GRANT ALL ON myciteseerx.* TO '$USERNAME$'@'$DOMAIN$' IDENTIFIED BY '$PASSWORD$';
+GRANT ALL ON myciteseerx.* TO '$USERNAME$'@'$DOMAIN$';-- IDENTIFIED BY '$PASSWORD$';

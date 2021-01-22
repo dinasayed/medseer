@@ -4,7 +4,7 @@
 #  IGC
 #
 
-CREATE DATABASE csx_citegraph CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE csx_citegraph CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE csx_citegraph;
 
@@ -35,7 +35,7 @@ CREATE TABLE clusters (
 	INDEX(cyear),
 	INDEX(updated)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE keymap (
@@ -46,7 +46,7 @@ CREATE TABLE keymap (
 	INDEX(ckey),
 	INDEX(cid)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE citations (
@@ -57,7 +57,7 @@ CREATE TABLE citations (
 	INDEX(cluster),
 	INDEX(paperid)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE papers (
@@ -66,7 +66,7 @@ CREATE TABLE papers (
 	PRIMARY KEY(id),
 	INDEX(cluster)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE citegraph (
@@ -80,7 +80,7 @@ CREATE TABLE citegraph (
 	INDEX(cited),
 	INDEX(selfCite)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE infupdates (
@@ -219,4 +219,4 @@ CREATE TRIGGER linkccluster_del AFTER DELETE ON citations
 delimiter ;
 
 
-GRANT ALL ON csx_citegraph.* TO '$USERNAME$'@'$DOMAIN$' IDENTIFIED BY '$PASSWORD$';
+GRANT ALL ON csx_citegraph.* TO '$USERNAME$'@'$DOMAIN$';-- IDENTIFIED BY '$PASSWORD$';

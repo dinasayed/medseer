@@ -3,7 +3,7 @@
 #
 #  JPFR
 #
-CREATE DATABASE csx_external_metadata CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE csx_external_metadata CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE csx_external_metadata;
 
@@ -42,7 +42,7 @@ CREATE TABLE dblp (
   INDEX(title),
   UNIQUE INDEX(dkey)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=MyISAM;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 #
 # Stores CiteULike metadata.
@@ -55,7 +55,7 @@ CREATE table citeulike (
   PRIMARY KEY (citeulikeid),
   UNIQUE INDEX (citeseerxid)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=MyISAM;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 #
 # Stores DBLP metadata.
@@ -72,6 +72,6 @@ CREATE TABLE acm (
   PRIMARY KEY(id),
   INDEX(title)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=MyISAM;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
-GRANT ALL ON csx_external_metadata.* TO '$USERNAME$'@'$DOMAIN$' IDENTIFIED BY '$PASSWORD$';
+GRANT ALL ON csx_external_metadata.* TO '$USERNAME$'@'$DOMAIN$';-- IDENTIFIED BY '$PASSWORD$';

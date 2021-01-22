@@ -4,7 +4,7 @@
 #  IGC
 #
 
-CREATE DATABASE citeseerx CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE citeseerx CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE citeseerx;
 
@@ -43,7 +43,7 @@ CREATE TABLE papers (
   INDEX(selfCites),
   INDEX(versionTime)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE papers_versionShadow (
@@ -64,7 +64,7 @@ CREATE TABLE papers_versionShadow (
 	FOREIGN KEY(id) REFERENCES papers(id)
 	  ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE authors (
@@ -83,7 +83,7 @@ CREATE TABLE authors (
   FOREIGN KEY (paperid) REFERENCES papers(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE cannames (
@@ -98,7 +98,7 @@ CREATE TABLE cannames (
   hindex int(10) UNSIGNED NOT NULL DEFAULT '0',
   PRIMARY KEY (id)
 ) 
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE authors_versionShadow (
@@ -112,7 +112,7 @@ CREATE TABLE authors_versionShadow (
   FOREIGN KEY(id) REFERENCES authors(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE acknowledgments (
@@ -131,7 +131,7 @@ CREATE TABLE acknowledgments (
   FOREIGN KEY(paperid) REFERENCES papers(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE acknowledgments_versionShadow (
@@ -143,7 +143,7 @@ CREATE TABLE acknowledgments_versionShadow (
   FOREIGN KEY(id) REFERENCES acknowledgments(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE acknowledgmentContexts (
@@ -155,7 +155,7 @@ CREATE TABLE acknowledgmentContexts (
   FOREIGN KEY(ackid) REFERENCES acknowledgments(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE citations (
@@ -188,7 +188,7 @@ CREATE TABLE citations (
   FOREIGN KEY (paperid) REFERENCES papers(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE citationContexts (
@@ -200,7 +200,7 @@ CREATE TABLE citationContexts (
   FOREIGN KEY (citationid) REFERENCES citations(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE keywords (
@@ -213,7 +213,7 @@ CREATE TABLE keywords (
   FOREIGN KEY(paperid) REFERENCES papers(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE keywords_versionShadow (
@@ -223,7 +223,7 @@ CREATE TABLE keywords_versionShadow (
   FOREIGN KEY(id) REFERENCES keywords(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE checksum (
@@ -236,7 +236,7 @@ CREATE TABLE checksum (
   FOREIGN KEY(paperid) REFERENCES papers(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE paperVersions (
@@ -259,7 +259,7 @@ CREATE TABLE paperVersions (
   FOREIGN KEY(paperid) REFERENCES papers(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 #CREATE TABLE externalPaperData (
@@ -273,7 +273,7 @@ CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
 #  INDEX(source),
 #  INDEX(date)
 #)
-#CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+#CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE userCorrections (
@@ -288,7 +288,7 @@ CREATE TABLE userCorrections (
   FOREIGN KEY(paperid) REFERENCES papers(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE urls (
@@ -301,7 +301,7 @@ CREATE TABLE urls (
   FOREIGN KEY(paperid) REFERENCES papers(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE hubUrls (
@@ -314,7 +314,7 @@ CREATE TABLE hubUrls (
   INDEX(lastCrawl),
   INDEX(repositoryID)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE hubMap (
@@ -329,7 +329,7 @@ CREATE TABLE hubMap (
   FOREIGN KEY(hubid) REFERENCES hubUrls(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE legacyIDMap (
@@ -342,7 +342,7 @@ CREATE TABLE legacyIDMap (
   FOREIGN KEY(paperid) REFERENCES papers(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE citecharts (
@@ -362,7 +362,7 @@ CREATE TABLE textSources (
   content TEXT,
   PRIMARY KEY(name)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 CREATE TABLE tags (
@@ -376,14 +376,14 @@ CREATE TABLE tags (
   FOREIGN KEY(paperid) REFERENCES papers(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 CREATE TABLE link_types (
   label VARCHAR(50) NOT NULL,
   baseURL VARCHAR(255) NOT NULL,
   PRIMARY KEY (label)
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 CREATE TABLE elinks (
   paperid VARCHAR(100) NOT NULL,
@@ -397,7 +397,7 @@ CREATE TABLE elinks (
   FOREIGN KEY(label) REFERENCES link_types(label)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 CREATE TABLE eAlgorithms (
   id SERIAL NOT NULL,
@@ -414,7 +414,7 @@ CREATE TABLE eAlgorithms (
   FOREIGN KEY(paperid) REFERENCES papers(id)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 #
 # Includes tables to support redirects of download links to other repositories.
@@ -428,7 +428,7 @@ CREATE TABLE redirecttemplates (
         PRIMARY KEY (label)
 )
 
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 # paper id (our id), label (repository label), externalrepoid (id in the other repo), url (if url is provided), paperlink (if url is to the paper)
@@ -448,7 +448,7 @@ CREATE TABLE redirectpdf (
   FOREIGN KEY(label) REFERENCES redirecttemplates(label)
     ON DELETE CASCADE ON UPDATE CASCADE
 )
-CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=INNODB;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=INNODB;
 
 
 
@@ -482,4 +482,4 @@ CREATE TRIGGER update_vvtime AFTER UPDATE ON paperVersions
 
 DELIMITER ;
 
-GRANT ALL ON citeseerx.* TO '$USERNAME$'@'$DOMAIN$' IDENTIFIED BY '$PASSWORD$';
+GRANT ALL ON citeseerx.* TO '$USERNAME$'@'$DOMAIN$';-- IDENTIFIED BY '$PASSWORD$';
