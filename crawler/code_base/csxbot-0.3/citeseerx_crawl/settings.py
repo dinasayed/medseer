@@ -13,10 +13,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'citeseerx_crawl',             # Or path to database file if using sqlite3.
-        'USER': 'user',                      # Not used with sqlite3.
-        'PASSWORD': 'passwd',                  # Not used with sqlite3.
-        'HOST': 'hostname',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'USER': 'csx-devel',                      # Not used with sqlite3.
+        'PASSWORD': 'csx-devel',                  # Not used with sqlite3.
+        'HOST': 'mysql',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
