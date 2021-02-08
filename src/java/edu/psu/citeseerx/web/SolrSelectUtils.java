@@ -64,6 +64,7 @@ public class SolrSelectUtils {
             con = (HttpURLConnection)url.openConnection();
 	    BufferedReader in = null;
 	    if(con != null) {
+            	System.out.println("**********doJSONQuery\nI will throw exception now");
             	in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 	    }
 	    else {

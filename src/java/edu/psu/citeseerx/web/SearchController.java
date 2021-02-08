@@ -66,6 +66,7 @@ public class SearchController implements Controller {
 
     public void setSolrSelectUrl(String solrSelectUrl)
     throws MalformedURLException {
+        System.out.println("**********setSolrSelectUrl\nsolrSelectUrl=" + solrSelectUrl);
         try {
             new URI("http",solrSelectUrl, null).toURL();
             this.solrSelectUrl = solrSelectUrl;
@@ -334,6 +335,8 @@ public class SearchController implements Controller {
                  *  fragment
                  */
             "http", solrSelectUrl + queryString.toString(), null);
+        System.out.println("**********executeSolrQuery\nsolrSelectUrl=" + solrSelectUrl);
+        System.out.println("**********executeSolrQuery\nuri=" + uri.toURL().toString());
         output =
             SolrSelectUtils.doJSONQuery(uri.toURL().toString());
         return output;
@@ -471,6 +474,7 @@ public class SearchController implements Controller {
             String solrQuery = buildSolrQuery(DOCUMENT_QUERY, queryParameters);
 
             try {
+                System.out.println("**********doGeneralSearch\nsolrSelectUrl=" + solrSelectUrl);
                 JSONObject output = executeSolrQuery(solrSelectUrl, solrQuery);
                 JSONObject responseObject = output.getJSONObject("response");
                 numFound = responseObject.getInt("numFound");
